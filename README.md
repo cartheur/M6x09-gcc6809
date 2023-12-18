@@ -4,6 +4,8 @@ This is the user manual for the GCC port to the Motorola 6809 processor. It cont
 
 This guide may not always reflect the latest version of GCC6809. Check the GCC6809 [homepage](https://web.archive.org/web/20090131183455/http://www.oddchange.com/gcc6809/) for additional information.
 
+A description of the simulator is found [here](/SimReadMe.md).
+
 ### Installation
 
 GCC6809 is now distributed as a patch against a specific version of the GCC sources. You’ll need to obtain a GCC source tarball, unpack it, then apply the patch. In order to build the compiler, you’ll of course need a working native compiler.
