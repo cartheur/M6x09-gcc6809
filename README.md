@@ -22,8 +22,7 @@ At this point, the sources are ready to build… see below for more.
 
 GCC6809 only runs under GNU or POSIX style environments; notably, it will not work under Microsoft Windows.
 
-Remember that gcc per se doesn’t include an assembler, linker, or any user libraries. The assembler and linker are provided along with the compiler tarball (they are in the `as-4.1.0` subdirectory and are a copy of the popular asxxxx cross
-assembler). Building gcc can build and install these tools as well.
+Remember that gcc per se doesn’t include an assembler, linker, or any user libraries. The assembler and linker are provided along with the compiler tarball (they are in the `as-4.1.0` subdirectory and are a copy of the popular `asxxxx` cross-assembler). Building `gcc` can build and install these tools as well.
 
 Libraries are not addressed here; it is possible to use GCC6809 with any libraries at all and provide all of your own support routines. A port of the newlib library is available for those who need one, although it is not well tested.
 
@@ -61,8 +60,7 @@ The Makefile will default to the correct version of GCC, although it can be fool
 
 By default, it will configure a default, C-only compiler build that will generate code for any 6809-based hardware. You can change the language frontends to be built by setting `GCC_LANGUAGES` in your environment before running `make`. You can also target a specific piece of supported harware using the `GCC_TARGET` variable.
 
-When running on Linux, the build requires root privileges in order to install into `/usr/local` (or wherever you configured it to be installed). The makefile will normally attempt to run `sudo` before this step, except on host platforms
-that don’t support it.
+When running on Linux, the build requires root privileges in order to install into `/usr/local` (or wherever you configured it to be installed). The makefile will normally attempt to run `sudo` before this step, except on host platforms that don’t support it.
 
 The main files installed by GCC are:
 
@@ -147,15 +145,13 @@ The `S` register refers to the program stack and is used to reference local vari
 
 #### Soft Registers
 
-If you have a need for lots of registers, due to complex calculations or large functions, GCC tends not to generate the best code. However, it can be improved by enabling “soft registers”. These are memory
-locations, accessible in the direct addressing mode, which appear to GCC as registers.
+If you have a need for lots of registers, due to complex calculations or large functions, GCC tends not to generate the best code. However, it can be improved by enabling “soft registers”. These are memory locations, accessible in the direct addressing mode, which appear to GCC as registers.
 
 GCC6809 can use up to 4 soft registers; the memory locations are named `*m0` through `*m3`. Use the `-msoft-reg-count` option to enable their usage.
 
 Most of the passes of GCC expect to have a large number of registers to work with. When it runs out, any remaining values must be “spilled” to the stack. This creates several problems in embedded environments. First, stack load/store instructions can be slow, because it requires indexed addressing. Second, systems may have little RAM. Third, in multiprocessing systems which need to save/restore the stack, keeping the stack smaller will produce faster code.
 
-Soft registers help in all of these areas. Direct mode accesses are shorter in both length and execution time. Because they are global, and not relative to the stack frame, less overall memory is used. Finally, because GCC is unaware that these registers are actually in memory, it can still perform some optimizations
-on values in these locations which aren’t possible once values are spilled to the stack (just because of the way GCC is written).
+Soft registers help in all of these areas. Direct mode accesses are shorter in both length and execution time. Because they are global, and not relative to the stack frame, less overall memory is used. Finally, because GCC is unaware that these registers are actually in memory, it can still perform some optimizations on values in these locations which aren’t possible once values are spilled to the stack (just because of the way GCC is written).
 
 Note that all soft registers are considered call-clobbered. GCC6809 will not save/restore any soft registers in the function prologue/epilogue, as it would be too slow. Consequently, values can’t be kept in soft registers across a function call.
 
