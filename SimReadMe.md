@@ -6,7 +6,7 @@ The simulator has not been online for some time, but it is so useful to me, I fe
 
 The 6809 simulator has recently undergone a major rewrite in many areas. It is still being worked on heavily, and further releases are expected. However, feedback is welcome at this point for other ways to make it more useful to more people.
 
-Additional details are described [here](https://github.com/cartheur/M6809-SBC).
+Additional details are described [here](https://github.com/cartheur/M6809-I-SBC).
 
 
 ### Features
