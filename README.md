@@ -10,11 +10,11 @@ A description of the simulator is found [here](/SimReadMe.md).
 
 GCC6809 is now distributed as a patch against a specific version of the GCC sources. You’ll need to obtain a GCC source tarball, unpack it, then apply the patch. In order to build the compiler, you’ll of course need a working native compiler.
 
-The sources can be obtained from ftp.gnu.org or any GNU [mirror](https://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.3.1/). Look for a file named gcc-4.3.1.tar.bz2 or similar. For convenience this file is in the `gcc` folder.
+The sources can be obtained from ftp.gnu.org or any GNU [mirror](https://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.6.4/). Look for a file named `gcc-4.6.4.tar.bz2` or similar. For convenience this file is in the `gcc` folder.
 
-1. Extract the contents (using gunzip or bunzip2). For example, bzcat gcc-4.3.1.tar.bz2 | tar xvf –. This will create a new directory named gcc-4.3.1 which has all of the pristine sources.
+1. Extract the contents (using `gunzip` or `bunzip2`). For example, `bzcat gcc-4.6.4.tar.bz2 | tar xvf –`. This will create a new directory named `gcc-4.6.4` which has all of the pristine sources.
 
-2.Apply the 6809 patch using the ‘patch’ command. You need to be in the newly created directory, and you need to use the `-p1` option to patch. For example: cd gcc-4.3.1 && patch -p1 < ../gcc-4.3.1-1.patch. You’ll see a few messages saying that some files are added/modified.
+2.Apply the 6809 patch using the ‘patch’ command. You need to be in the newly created directory, and you need to use the `-p1` option to patch. For example: `cd gcc-4.6.4 && patch -p1 < ../gcc-4.6.4.patch`. You’ll see a few messages saying that some files are added/modified.
 
 3. Fix up permissions on a few files. The files in binutils named `ar`, `as`, and `ld` all need to be executable. Use `chmod a+x` on each of them to fix this. Working-out how to do this automatically.
 
